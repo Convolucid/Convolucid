@@ -1,0 +1,121 @@
+header {
+    padding: 10px;
+
+    background-color: var(--color-primary);
+    color: var(--color-primary-contrast);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo {
+    height: 2rem;
+}
+
+.nav-title {
+    flex: 2 0 auto;
+    padding-left: 5px;
+    font-family: var(--serif);
+}
+
+.nav-list {
+    display: flex;
+    margin: 0;
+}
+
+.nav-list li {
+    cursor: pointer;
+}
+
+.nav-list li:hover, .nav-list li:focus {
+    color: var(color-secondary);
+    text-shadow: 0px 0px 10px var(--color-primary), 0px 0px 30px var(--color-accent-contrast);
+    transition: 1s;
+}
+
+.nav-list-collapse {
+    display: none;
+}
+
+/* Nav-list-overlay is mobile-first, where the menu expands to fill the screen.  Overflow-y hidden prevents scrolling */
+@keyframes nav-list-flyout {
+    0% {
+        display: none;
+        width: 0%;
+    }
+    1% {
+        display: block;
+        width: 0%;
+    }
+    100% {
+        display: block;
+        width: 50%;
+    }
+}
+
+.nav-list-overlay {
+    position: fixed;
+    display: block;
+    z-index: var(--z-overlay);
+    top: 0;
+    right: 0;
+    overflow-y: hidden;
+    width: 50%;
+
+    animation-name: nav-list-flyout;
+    animation-duration: 0.5s;
+
+    margin: 0;
+    padding: 0;
+
+    border-style: none none ridge ridge;
+    border-color: var(--color-secondary);
+
+    /* Two background colors provides a fallback if the alpha isn't recognized */
+    background-color: var(--color-neutral-contrast);
+    background-color: var(--color-overlay-alpha);
+    color: var(--color-primary-contrast);
+    text-align: center;
+}
+
+.nav-list-overlay li {
+    padding: 10px 0px 30px;
+
+    font-family: var(--serif);
+    font-size: 1.25rem;
+}
+
+/* This sets the first list item lower on the screen for a mobile overlay */
+.nav-list-overlay li:nth-child(1) {
+    margin-top: 10vh;
+}
+
+.nav-list-expand li {
+    padding: 0 2vw;
+
+    font-family: var(--sansSerif);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.nav-list-button {
+    position: relative;
+    z-index: var(--z-top);
+    padding: 0;
+    border: 0;
+    background: none;
+}
+
+.nav-list-button svg {
+    height: 2.25rem;
+}
+
+@media (min-width: 768px) {
+
+    .nav-list-button {
+        display: none;
+    }
+    
+}

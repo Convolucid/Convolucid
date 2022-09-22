@@ -1,6 +1,8 @@
 import './style.css'
 import html from './index.html'
 
+import navComponent from './components/nav/nav.js'
+
 function component(htmlStructure)
 {
     const element = document.createElement('div')
@@ -12,3 +14,11 @@ function component(htmlStructure)
 
 const bodyHTML = component(html);
 document.body.appendChild(bodyHTML);
+
+const nav = navComponent();
+
+function resize()
+{
+    nav.resize()
+}
+window.addEventListener('resize', resize)

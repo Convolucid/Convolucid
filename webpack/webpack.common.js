@@ -6,7 +6,7 @@ module.exports = {
     plugins:
     [
         new HtmlWebpackPlugin({
-            title: 'Training Wheels'
+            title: 'Convolucid'
         })
     ],
     output:
