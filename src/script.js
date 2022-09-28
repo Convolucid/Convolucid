@@ -3,7 +3,7 @@ import html from './index.html'
 
 import navComponent from './components/nav/nav.js'
 import CollapsiblePanel from './components/collapsiblePanel/CollapsiblePanel'
-import PortfolioLink from './portfolioLink/PortfolioLink'
+import PortfolioLink from './components/portfolioLink/PortfolioLink'
 
 import martialPathImg from './assets/martialpath.png'
 import trainingWheelsImg from './assets/trainingwheels.png'
@@ -24,6 +24,17 @@ document.body.appendChild(bodyHTML);
 
 const nav = navComponent();
 const main = document.querySelector('main')
+
+const portfolioLink = document.getElementById('link-portfolio')
+const resumeLink = document.getElementById('link-resume')
+
+const portfolioPage = document.createElement('div')
+const resumePage = document.createElement('div')
+portfolioPage.classList.add('container')
+resumePage.classList.add('container')
+
+main.appendChild(portfolioPage)
+main.appendChild(resumePage)
 
 
 
@@ -64,10 +75,39 @@ const largeAppPanel = new CollapsiblePanel(
 //     new PortfolioImage("Green Mountains")
 // )
 
-main.appendChild(largeAppPanel)
+portfolioPage.appendChild(largeAppPanel)
+
+const mainPageArray = [
+    portfolioPage,
+    resumePage
+]
+
 
 // Resume Page
 // const workHistoryPanel = new CollapsiblePanel()
+
+// Display content functionality
+function displayContent(content, contentArray)
+{
+    for(let i=0; i < contentArray.length; i++)
+    {
+        if(contentArray[i] == content)
+        {
+            contentArray[i].classList.remove('main-hidden')
+        }
+        else
+        {
+            contentArray[i].classList.add('main-hidden')
+        }
+    }
+    resize();
+}
+
+displayContent(portfolioPage, mainPageArray)
+
+portfolioLink.addEventListener('click', () => displayContent(portfolioPage, mainPageArray))
+resumeLink.addEventListener('click', () => displayContent(resumePage, mainPageArray))
+
 
 
 function resize()

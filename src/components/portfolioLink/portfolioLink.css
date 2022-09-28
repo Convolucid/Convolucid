@@ -1,0 +1,44 @@
+.portfolio-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 20px;
+    /* border: 1px solid red; */
+}
+
+.portfolio-img {
+    border: 1px solid black;
+    width: 400px;
+    height: 100%;
+    filter: grayscale();
+}
+
+.portfolio-img:hover, .portfolio-img:focus {
+    filter: none;
+}
+
+.portfolio-item section {
+    text-align: center;
+}
+
+.portfolio-item section > p {
+    text-align: left;
+    padding-top: 10px;
+}
+
+/* Add image filters on hover for grayscale and potentially hooks to change Three.js values depending on what's hovered */
+
+@media (min-width:768px) {
+    .portfolio-item {
+        flex-wrap: nowrap;
+    }
+
+
+    .portfolio-item section {
+        max-width: 768px;
+        margin-left: 20px;
+        text-align: left;
+    }
+
+}

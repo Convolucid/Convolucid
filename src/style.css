@@ -1,14 +1,14 @@
 :root {
     /* Colors */
     --color-neutral: rgb(249, 246, 250);
-    --color-primary: rgb(122, 0, 146);
+    --color-primary: rgb(77, 77, 77);
     --color-secondary: rgb(255, 255, 96);
 
-    --color-neutral-contrast: rgb(81, 42, 94);
+    --color-neutral-contrast: rgb(46, 46, 46);
     --color-primary-contrast: rgb(253, 253, 194);
     --color-accent-contrast: rgb(255, 254, 230);
 
-    --color-overlay-alpha: rgb(81, 42, 94, 0.95);
+    --color-overlay-alpha: rgba(56, 56, 56, 0.95);
 
     /* Fonts */
     --sansSerif: Verdana, Arial, sans-serif;
@@ -81,4 +81,8 @@ body {
 
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+}
+
+.main-hidden {
+    display: none;
 }
