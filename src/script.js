@@ -1,5 +1,6 @@
 import './style.css'
 import html from './index.html'
+import Experience from './components/webgl/Experience.js'
 
 import navComponent from './components/nav/nav.js'
 import CollapsiblePanel from './components/collapsiblePanel/CollapsiblePanel'
@@ -24,6 +25,7 @@ document.body.appendChild(bodyHTML);
 
 const nav = navComponent();
 const main = document.querySelector('main')
+const experience = new Experience(document.querySelector('canvas.webgl'))
 
 const portfolioLink = document.getElementById('link-portfolio')
 const resumeLink = document.getElementById('link-resume')
@@ -113,5 +115,8 @@ resumeLink.addEventListener('click', () => displayContent(resumePage, mainPageAr
 function resize()
 {
     nav.resize()
+    experience.resize()
 }
 window.addEventListener('resize', resize)
+
+experience.update();
