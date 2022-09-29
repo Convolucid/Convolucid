@@ -30,7 +30,7 @@ export default class Renderer
         })
 
         this.debugObject = {}
-        this.debugObject.clearColor = new THREE.Color(0.2, 0.95, 0.95)
+        this.debugObject.clearColor = new THREE.Color(0.95, 0.95, 0.95)
 
         this.instance.physicallyCorrectLights = true
         this.instance.outputEncoding = THREE.sRGBEncoding

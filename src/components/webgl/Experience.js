@@ -5,6 +5,8 @@ import Camera from './Camera.js'
 import Renderer from './Renderer.js'
 import Time from './utils/Time.js'
 import World from './World.js'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+
 
 
 let instance = null
@@ -34,6 +36,7 @@ export default class Experience
         this.camera = new Camera();
         this.renderer = new Renderer();
         this.world = new World()
+        this.controls = new OrbitControls(this.camera.instance, this.canvas)
 
         this.start = 1
 
@@ -52,6 +55,7 @@ export default class Experience
         this.world.update()
         this.camera.update()
         this.renderer.update()
+        this.controls.update()
         window.requestAnimationFrame(() => this.update())
     }
 
