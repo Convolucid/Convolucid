@@ -5,6 +5,9 @@
     align-items: center;
     margin: 40px 20px;
     /* border: 1px solid red; */
+    /* background-color: #f5f5f5dd; */
+    padding: 10px 0px;
+    user-select: none;
 }
 
 .portfolio-img {
@@ -20,6 +23,15 @@
 
 .portfolio-item section {
     text-align: center;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+}
+
+.portfolio-item section > h2 {
+    font-family: var(--sansSerif);
+    padding-top: 10px;
 }
 
 .portfolio-item section > p {

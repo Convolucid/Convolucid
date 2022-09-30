@@ -31,7 +31,7 @@ export default class Camera
             150
         )
 
-        this.instance.position.set( 0, 0, 20 )
+        this.instance.position.set( 0, 0, 15 )
         // this.instance.chapterPosition = new THREE.Vector3()
         // this.instance.resizePosition = new THREE.Vector3()
         // this.instance.scrollFactor = 0

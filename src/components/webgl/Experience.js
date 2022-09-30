@@ -13,7 +13,7 @@ let instance = null
 
 export default class Experience
 {
-    constructor(canvas)
+    constructor(canvas, controlElement)
     {
         // Singleton setup
         if(instance)
@@ -27,6 +27,7 @@ export default class Experience
         window.experience = this
 
         this.canvas = canvas
+        this.controlElement = controlElement
 
         // Setup
         this.debug = new Debug()
@@ -36,7 +37,9 @@ export default class Experience
         this.camera = new Camera();
         this.renderer = new Renderer();
         this.world = new World()
-        this.controls = new OrbitControls(this.camera.instance, this.canvas)
+        this.controls = new OrbitControls(this.camera.instance, this.controlElement)
+
+        this.controls.enableZoom = false;
 
         this.start = 1
 

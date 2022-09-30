@@ -19,14 +19,14 @@ export default class World
 
         // Lights
         // Ambient light
-        const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+        const ambientLight = new THREE.AmbientLight(0xffffff, 2)
         if(this.debug.active)
         {
             this.debugFolder.add(ambientLight, 'intensity').min(0).max(1).step(0.001).name('Ambient Light Intensity')
         }
         this.scene.add(ambientLight)
         
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 2)
         directionalLight.position.set(-3.5, 2, 4.5)
         if(this.debug.active)
         {
@@ -86,6 +86,6 @@ export default class World
 
             // Update the materials
         this.material.roughness = Math.abs(Math.cos(elapsedTime * 0.25))
-        this.material.metalness = Math.abs(Math.sin(elapsedTime))
+        // this.material.metalness = Math.abs(Math.sin(elapsedTime))
     }
 }

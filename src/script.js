@@ -25,7 +25,10 @@ document.body.appendChild(bodyHTML);
 
 const nav = navComponent();
 const main = document.querySelector('main')
-const experience = new Experience(document.querySelector('canvas.webgl'))
+const experience = new Experience(
+    document.querySelector('canvas.webgl'),
+    main
+)
 
 const portfolioLink = document.getElementById('link-portfolio')
 const resumeLink = document.getElementById('link-resume')
@@ -77,7 +80,23 @@ const largeAppPanel = new CollapsiblePanel(
 //     new PortfolioImage("Green Mountains")
 // )
 
+
+
+
 portfolioPage.appendChild(largeAppPanel)
+
+
+const resumePanels = new CollapsiblePanel(
+    'My Resume',
+    new PortfolioLink(
+        'Martial Path', 'martial.convolucid.com', martialPathImg, 
+        `A digital version of my kung fu school's rank curriculum, in which students complete challenges to earn new techniques, lessons, and sets.  The app demonstrates mobile-first responsive design with HTML, CSS, and Javascript.  Direct SVG manipulation, GSAP animation, and CSS transitions are utilized in menus and backgrounds. All artwork was created in Adobe Photoshop, Illustrator, and Indesign using original illustrations and stock images.`
+    )
+)
+
+resumePage.appendChild(resumePanels)
+
+
 
 const mainPageArray = [
     portfolioPage,

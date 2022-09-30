@@ -1,18 +1,18 @@
 :root {
     /* Colors */
     --color-neutral: rgb(249, 246, 250);
-    --color-primary: rgb(77, 77, 77);
-    --color-secondary: rgb(255, 255, 96);
+    --color-primary: rgb(59, 59, 59);
+    --color-secondary: rgb(219, 219, 219);
 
     --color-neutral-contrast: rgb(46, 46, 46);
-    --color-primary-contrast: rgb(253, 253, 194);
+    --color-primary-contrast: rgb(243, 243, 243);
     --color-accent-contrast: rgb(255, 254, 230);
 
     --color-overlay-alpha: rgba(56, 56, 56, 0.95);
     --color-neutral-alpha: rgba(249, 246, 250, 0.0);
 
     /* Fonts */
-    --sansSerif: Verdana, Arial, sans-serif;
+    --sansSerif: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     --serif: "Georgia", Times, serif;
 
     /* Layers */
@@ -95,4 +95,15 @@ body {
     outline: none;
     /* background-color: red; */
     z-index: var(--z-bottom);
+}
+
+.webgl-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    /* background-color: red; */
+    z-index: var(--z-top);
 }
