@@ -23,6 +23,7 @@ export default class PortfolioLink
         aLink.target = '_blank';
         // Make link a certain size
 
+
         // Add img
         const aImage = document.createElement('img')
         aImage.src = img;
@@ -38,6 +39,16 @@ export default class PortfolioLink
         aSection.appendChild(aLink)
         aSection.appendChild(aDesc)
 
+        this.createLink(aTitle, link)
+        this.createLink(aImage, link)
+
         return this.a;
+    }
+
+    createLink(element, link)
+    {
+        element.addEventListener('click', () => {
+            window.open(`http://${link}`, '_blank')
+        })
     }
 }

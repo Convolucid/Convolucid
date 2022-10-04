@@ -1,3 +1,11 @@
+.panel-expand {
+    /* animation-name: panel-expand;
+    animation-duration: 1s; */
+    max-height: 700px;
+    transition: 1s;
+}
+
+
 .collapsible-panel h1 {
     /* margin: 0 auto; */
     /* border: 1px solid var(--color-primary); */
@@ -6,3 +14,19 @@
     text-align: center;
     font-family: var(--serif);
 }
+
+.panel-collapse {
+    max-height: 0;
+    overflow: hidden;
+}
+
+/* @keyframes panel-expand {
+    0% {
+
+        max-height: 0;
+    }
+    100% {
+
+        max-height: 100%;
+    }
+} */

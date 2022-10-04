@@ -5,7 +5,7 @@ import Camera from './Camera.js'
 import Renderer from './Renderer.js'
 import Time from './utils/Time.js'
 import World from './World.js'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import Controls from './utils/Controls.js'
 
 
 
@@ -37,12 +37,7 @@ export default class Experience
         this.camera = new Camera();
         this.renderer = new Renderer();
         this.world = new World()
-        this.controls = new OrbitControls(this.camera.instance, this.controlElement)
-
-        this.controls.enableZoom = false;
-
-        this.start = 1
-
+        this.controls = new Controls();
     }
 
     resize()
