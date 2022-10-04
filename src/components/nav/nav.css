@@ -28,11 +28,14 @@ header {
 
 .nav-list li {
     cursor: pointer;
+    font-family: var(--sansSerif);
 }
 
-.nav-list li:hover, .nav-list li:focus {
+.nav-list li:hover,
+.nav-list li:focus {
     color: var(color-secondary);
-    text-shadow: 0px 0px 10px var(--color-primary), 0px 0px 30px var(--color-accent-contrast);
+    text-shadow: 0px 0px 10px var(--color-primary),
+        0px 0px 30px var(--color-accent-contrast);
     transition: 1s;
 }
 
@@ -84,7 +87,6 @@ header {
 .nav-list-overlay li {
     padding: 10px 0px 30px;
 
-    font-family: var(--serif);
     font-size: 1.25rem;
 }
 
@@ -96,9 +98,9 @@ header {
 .nav-list-expand li {
     padding: 0 2vw;
 
-    font-family: var(--sansSerif);
-    font-size: 0.9rem;
     text-transform: uppercase;
+
+    font-size: 0.9rem;
 }
 
 .nav-list-button {
@@ -113,10 +115,30 @@ header {
     height: 2.25rem;
 }
 
-@media (min-width: 768px) {
+#link-hire a {
+    text-decoration: none;
+    color: var(--color-neutral);
+}
 
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
     .nav-list-button {
         display: none;
     }
-    
+
+    #link-hire {
+        background-color: var(--color-neutral);
+
+        border-radius: 4px;
+    }
+
+    #link-hire a {
+        color: var(--color-neutral-contrast);
+    }
 }
