@@ -32,6 +32,8 @@ document.body.appendChild(bodyHTML);
 const nav = navComponent();
 const main = document.querySelector("main");
 
+const navLogo = document.getElementById("nav-logo");
+const navTitle = document.getElementById("nav-title");
 const portfolioLink = document.getElementById("link-portfolio");
 const resumeLink = document.getElementById("link-resume");
 
@@ -134,6 +136,12 @@ function displayContent(content, contentArray) {
 
 displayContent(portfolioPage, mainPageArray);
 
+navLogo.addEventListener("click", () =>
+    displayContent(portfolioPage, mainPageArray)
+);
+navTitle.addEventListener("click", () =>
+    displayContent(portfolioPage, mainPageArray)
+);
 portfolioLink.addEventListener("click", () =>
     displayContent(portfolioPage, mainPageArray)
 );
