@@ -75,6 +75,15 @@ const largeAppPanel = new CollapsiblePanel(
     )
 );
 
+const smallAppPanel = new CollapsiblePanel(
+    "Apps and Websites",
+    new PortfolioLink(
+        "Martial Path",
+        "martial.convolucid.com",
+        martialPathImg,
+        `A digital version of my kung fu school's rank curriculum, in which students complete challenges to earn new techniques, lessons, and sets.  The app demonstrates mobile-first responsive design with HTML, CSS, and Javascript.  Direct SVG manipulation, GSAP animation, and CSS transitions are utilized in menus and backgrounds. All artwork was created in Adobe Photoshop, Illustrator, and Indesign using original illustrations and stock images.`
+    ),
+)
 // const smallAppPanel = new CollapsiblePanel(
 //     new PortfolioLink("TWWG"),
 //     new PortfolioLink("Vertexture"),
@@ -90,6 +99,7 @@ const largeAppPanel = new CollapsiblePanel(
 // )
 
 portfolioPage.appendChild(largeAppPanel);
+portfolioPage.appendChild(smallAppPanel);
 
 const workExperiencePanel = new CollapsiblePanel(
     "Work Experience",

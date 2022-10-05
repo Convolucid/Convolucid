@@ -26,11 +26,11 @@ export default class CollapsiblePanel {
 
     togglePanel() {
         if (this.container.classList.contains("panel-collapse")) {
-            this.container.classList.add("panel-expand");
-            this.container.classList.remove("panel-collapse");
+            this.container.classList.replace("panel-collapse", "panel-expand");
+        } else if(this.container.classList.contains("panel-expand")) {
+            this.container.classList.replace("panel-expand", "panel-collapse");
         } else {
-            this.container.classList.add("panel-collapse");
-            this.container.classList.remove("panel-expand");
+            this.container.classList.add("panel-collapse")
         }
     }
 }
