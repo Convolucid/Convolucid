@@ -89,30 +89,34 @@ const largeAppPanel = new CollapsiblePanel(
 
 portfolioPage.appendChild(largeAppPanel);
 
-const resumePanels = new CollapsiblePanel(
-    "My Resume",
-    new ResumeCategory(resumeWorkExperience),
-    new ResumeCategory(resumeRecentProjects),
-    new ResumeCategory(resumePortfolio),
-    new ResumeCategory(resumeEducation),
+const workExperiencePanel = new CollapsiblePanel(
+    "Work Experience",
+    new ResumeCategory(resumeWorkExperience)
+);
+const recentProjectsPanel = new CollapsiblePanel(
+    "Recent Projects",
+    new ResumeCategory(resumeRecentProjects)
+);
+const resumePortfolioPanel = new CollapsiblePanel(
+    "Portfolio",
+    new ResumeCategory(resumePortfolio)
+);
+const resumeEducationPanel = new CollapsiblePanel(
+    "Education",
+    new ResumeCategory(resumeEducation)
+);
+const resumeSkillsPanel = new CollapsiblePanel(
+    "Skills",
     new ResumeCategory(resumeSkills)
 );
 
-resumePage.appendChild(resumePanels);
+resumePage.appendChild(workExperiencePanel);
+resumePage.appendChild(recentProjectsPanel);
+resumePage.appendChild(resumePortfolioPanel);
+resumePage.appendChild(resumeEducationPanel);
+resumePage.appendChild(resumeSkillsPanel);
 
 const mainPageArray = [portfolioPage, resumePage];
-
-// Resume Page
-// const workHistoryPanel = new CollapsiblePanel()
-
-// const mainQuery = main.getElementsByTagName('p')
-
-// for(let i = 0; i < mainQuery.length; i++)
-// {
-//     mainQuery[i].classList.add('webgl-controls')
-// }
-
-// console.log(document.querySelectorAll('.webgl-controls'))
 
 const experience = new Experience(document.querySelector("canvas.webgl"), main);
 

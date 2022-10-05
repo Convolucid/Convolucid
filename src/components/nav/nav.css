@@ -1,18 +1,12 @@
-header {
-    padding: 10px;
-
-    background-color: var(--color-primary);
-    color: var(--color-primary-contrast);
-}
-
 .nav {
     display: flex;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .nav-logo {
     height: 2.5rem;
-    padding-left: 7px;
 }
 
 .nav-title {
@@ -140,5 +134,11 @@ a:active {
 
     #link-hire a {
         color: var(--color-neutral-contrast);
+    }
+}
+
+@media (min-width: 2200px) {
+    .nav {
+        max-width: 1600px;
     }
 }
