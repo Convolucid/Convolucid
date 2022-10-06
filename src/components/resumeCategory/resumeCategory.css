@@ -4,6 +4,10 @@
     max-width: 1024px;
 }
 
+.page-heading {
+    font-size: 2rem;
+}
+
 .skill-list {
     display: flex;
     flex-wrap: wrap;

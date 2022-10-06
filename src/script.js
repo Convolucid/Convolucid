@@ -7,6 +7,7 @@ import CollapsiblePanel from "./components/collapsiblePanel/CollapsiblePanel.js"
 import PortfolioLink from "./components/portfolioLink/PortfolioLink.js";
 
 import ResumeCategory from "./components/resumeCategory/resumeCategory.js";
+import resumeHeadingHTML from './components/resumeCategory/resumeCategories/resumeHeading.html'
 import resumeWorkExperience from "./components/resumeCategory/resumeCategories/workExperience.html";
 import resumeRecentProjects from "./components/resumeCategory/resumeCategories/recentProjects.html";
 import resumePortfolio from "./components/resumeCategory/resumeCategories/portfolio.html";
@@ -76,12 +77,12 @@ const largeAppPanel = new CollapsiblePanel(
 );
 
 const smallAppPanel = new CollapsiblePanel(
-    "Apps and Websites",
+    "Small Projects and Experiments",
     new PortfolioLink(
-        "Martial Path",
-        "martial.convolucid.com",
+        "Ocean",
+        "ocean.convolucid.com",
         martialPathImg,
-        `A digital version of my kung fu school's rank curriculum, in which students complete challenges to earn new techniques, lessons, and sets.  The app demonstrates mobile-first responsive design with HTML, CSS, and Javascript.  Direct SVG manipulation, GSAP animation, and CSS transitions are utilized in menus and backgrounds. All artwork was created in Adobe Photoshop, Illustrator, and Indesign using original illustrations and stock images.`
+        `A Three.js scene using fragment and vertex shaders.  The uniforms are updated on an animation cycle to create a moving texture like a churning sea.`
     ),
 )
 // const smallAppPanel = new CollapsiblePanel(
@@ -100,6 +101,8 @@ const smallAppPanel = new CollapsiblePanel(
 
 portfolioPage.appendChild(largeAppPanel);
 portfolioPage.appendChild(smallAppPanel);
+
+const resumeHeading = new ResumeCategory(resumeHeadingHTML);
 
 const workExperiencePanel = new CollapsiblePanel(
     "Work Experience",
@@ -122,6 +125,7 @@ const resumeSkillsPanel = new CollapsiblePanel(
     new ResumeCategory(resumeSkills)
 );
 
+resumePage.appendChild(resumeHeading);
 resumePage.appendChild(workExperiencePanel);
 resumePage.appendChild(recentProjectsPanel);
 resumePage.appendChild(resumePortfolioPanel);
