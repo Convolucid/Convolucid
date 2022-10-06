@@ -7,6 +7,7 @@ import CollapsiblePanel from "./components/collapsiblePanel/CollapsiblePanel.js"
 import PortfolioLink from "./components/portfolioLink/PortfolioLink.js";
 
 import ResumeCategory from "./components/resumeCategory/resumeCategory.js";
+import resumePDF from './assets/2022.09_Resume.pdf'
 import resumeHeadingHTML from './components/resumeCategory/resumeCategories/resumeHeading.html'
 import resumeWorkExperience from "./components/resumeCategory/resumeCategories/workExperience.html";
 import resumeRecentProjects from "./components/resumeCategory/resumeCategories/recentProjects.html";
@@ -104,6 +105,8 @@ portfolioPage.appendChild(smallAppPanel);
 
 const resumeHeading = new ResumeCategory(resumeHeadingHTML);
 
+
+
 const workExperiencePanel = new CollapsiblePanel(
     "Work Experience",
     new ResumeCategory(resumeWorkExperience)
@@ -131,6 +134,9 @@ resumePage.appendChild(recentProjectsPanel);
 resumePage.appendChild(resumePortfolioPanel);
 resumePage.appendChild(resumeEducationPanel);
 resumePage.appendChild(resumeSkillsPanel);
+
+const resumeDownloadPDF = document.getElementById('resume-pdf')
+resumeDownloadPDF.href = resumePDF
 
 const mainPageArray = [portfolioPage, resumePage];
 
