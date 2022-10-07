@@ -49,6 +49,11 @@ main.appendChild(resumePage);
 
 // Portfolio Page
 
+const portFolioIntro = new ResumeCategory(
+    `Hello!  I am Stephen Roberts, a front-end developer and artist working toward a career in creative coding.  I'm especially interested in 3D graphics, data visualization, user interfaces, and game development.  Welcome to my portfolio.`
+);
+portfolioPage.appendChild(portFolioIntro);
+
 const largeAppPanel = new CollapsiblePanel(
     "Apps and Websites",
     new PortfolioLink(

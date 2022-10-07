@@ -1,0 +1,1 @@
+Hello!  I am Stephen Roberts, a front-end developer and artist working toward a career in creative coding.  I'm especially interested in 3D graphics, data visualization, user interfaces, and game development.  Welcome to my portfolio.
