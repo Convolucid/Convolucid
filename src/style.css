@@ -21,6 +21,7 @@
     --z-background: -1;
     --z-overlay: 1;
     --z-top: 2;
+    --z-webgl: -2;
 }
 
 /* Box-sizing on all elements and pseudo-elements */
@@ -103,10 +104,12 @@ body {
 }
 
 .header {
+    position: relative;
     padding: 10px 15px;
 
     background-color: var(--color-primary);
     color: var(--color-primary-contrast);
+    z-index: var(--z-top);
 }
 
 .main-hidden {
@@ -118,7 +121,7 @@ body {
     top: 0;
     left: 0;
     outline: none;
-    z-index: var(--z-bottom);
+    z-index: var(--z-webgl);
 }
 
 .footer {

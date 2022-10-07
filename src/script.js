@@ -33,11 +33,13 @@ document.body.appendChild(bodyHTML);
 
 const nav = navComponent();
 const main = document.querySelector("main");
+const canvas = document.querySelector("canvas.webgl")
 
 const navLogo = document.getElementById("nav-logo");
 const navTitle = document.getElementById("nav-title");
 const portfolioLink = document.getElementById("link-portfolio");
 const resumeLink = document.getElementById("link-resume");
+const webglControlToggle = document.getElementById('toggle-webgl-controls')
 
 const portfolioPage = document.createElement("div");
 const resumePage = document.createElement("div");
@@ -145,7 +147,7 @@ resumeDownloadPDF.href = resumePDF
 
 const mainPageArray = [portfolioPage, resumePage];
 
-const experience = new Experience(document.querySelector("canvas.webgl"), main);
+const experience = new Experience(canvas, canvas);
 
 // Display content functionality
 function displayContent(content, contentArray) {
@@ -158,7 +160,6 @@ function displayContent(content, contentArray) {
     }
     resize();
 }
-
 displayContent(portfolioPage, mainPageArray);
 
 navLogo.addEventListener("click", () =>
@@ -172,6 +173,21 @@ portfolioLink.addEventListener("click", () =>
 );
 resumeLink.addEventListener("click", () =>
     displayContent(resumePage, mainPageArray)
+);
+
+// Toggle functions for 3D control and dark mode
+function toggleWebGLControl() {
+    const zIndex = getComputedStyle(canvas).getPropertyValue('--z-webgl')
+    if(zIndex == -2){
+        canvas.style.setProperty('--z-webgl', 1)
+    }
+    else {
+        canvas.style.setProperty('--z-webgl', -2)
+    }
+    console.log(zIndex)
+}
+webglControlToggle.addEventListener("click", () =>
+    toggleWebGLControl()
 );
 
 function resize() {

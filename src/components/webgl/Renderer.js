@@ -32,14 +32,16 @@ export default class Renderer
 
         this.debugObject = {}
         this.debugObject.clearColor = new THREE.Color(0.95, 0.95, 0.95)
+        this.debugObject.clearAlpha = 0.85;
 
         this.instance.physicallyCorrectLights = true
         this.instance.outputEncoding = THREE.sRGBEncoding
-        this.instance.toneMapping = THREE.CineonToneMapping
-        this.instance.toneMappingExposure = 1.75
+        this.instance.toneMapping = THREE.NoToneMapping
+        // this.instance.toneMappingExposure = 1.75
         this.instance.shadowMap.enabled = false
         this.instance.shadowMap.type = THREE.PCFSoftShadowMap
         this.instance.setClearColor(this.debugObject.clearColor)
+        this.instance.setClearAlpha(this.debugObject.clearAlpha)
         this.instance.setSize(this.sizes.width, this.sizes.height)
         this.instance.setPixelRatio(this.sizes.pixelRatio)
 
@@ -49,6 +51,7 @@ export default class Renderer
                 .onChange(() =>
                 {
                     this.instance.setClearColor(this.debugObject.clearColor)
+                    this.instance.setClearAlpha(this.debugObject.clearAlpha)
                 })
         ;
             this.debugFolder.add(this.instance, 'toneMapping', {
@@ -74,6 +77,7 @@ export default class Renderer
     update()
     {
         this.instance.setClearColor(this.debugObject.clearColor)
+        this.instance.setClearAlpha(this.debugObject.clearAlpha)
         this.instance.render(this.scene, this.camera.instance)
     }
 
