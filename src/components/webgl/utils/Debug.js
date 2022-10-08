@@ -6,7 +6,7 @@ export default class Debug
     {
         this.active = true;
 
-        this.ui = new GUI( {} )
+        this.ui = new GUI()
 
         if(this.active)
         {

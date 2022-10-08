@@ -126,8 +126,10 @@ body {
     z-index: var(--z-webgl);
 }
 
-.lil-gui {
+.lil-gui.autoPlace {
     left: 0;
+    top: 60px;
+    z-index: var(--z-overlay);
 }
 
 .footer {
