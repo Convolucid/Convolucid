@@ -16,7 +16,7 @@ export default class Controls
 
         
         this.orbit = new OrbitControls(this.camera, this.controlElement)
-        this.orbit.enableZoom = false;
+        // this.orbit.enableZoom = false;
         
        
         window.addEventListener('mousemove', (event) =>
