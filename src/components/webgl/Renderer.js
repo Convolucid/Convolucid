@@ -36,7 +36,7 @@ export default class Renderer
 
         this.instance.physicallyCorrectLights = true
         this.instance.outputEncoding = THREE.sRGBEncoding
-        this.instance.toneMapping = THREE.NoToneMapping
+        // this.instance.toneMapping = THREE.NoToneMapping
         // this.instance.toneMappingExposure = 1.75
         this.instance.shadowMap.enabled = false
         this.instance.shadowMap.type = THREE.PCFSoftShadowMap
@@ -53,17 +53,6 @@ export default class Renderer
                     this.instance.setClearColor(this.debugObject.clearColor)
                     this.instance.setClearAlpha(this.debugObject.clearAlpha)
                 })
-        ;
-            this.debugFolder.add(this.instance, 'toneMapping', {
-                None: THREE.NoToneMapping,
-                Linear: THREE.LinearToneMapping,
-                Reinhard: THREE.ReinhardToneMapping,
-                Cineon: THREE.CineonToneMapping,
-                ACESFilmic: THREE.ACESFilmicToneMapping
-        })
-            this.debugFolder.add(this.instance, 'toneMappingExposure')
-                .min(0).max(10).step(0.001)
-            ;
         }
 
     }
@@ -98,8 +87,6 @@ export default class Renderer
         this.instance.setClearColor(this.debugObject.clearColor)
         this.instance.setClearAlpha(this.debugObject.clearAlpha)
         this.instance.render(this.scene, this.camera.instance)
-
-        // console.log(this.debugObject.clearColor)
     }
 
 }

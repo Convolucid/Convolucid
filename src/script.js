@@ -96,19 +96,6 @@ const smallAppPanel = new CollapsiblePanel(
         `A Three.js scene using fragment and vertex shaders.  The uniforms are updated on an animation cycle to create a moving texture like a churning sea.`
     ),
 )
-// const smallAppPanel = new CollapsiblePanel(
-//     new PortfolioLink("TWWG"),
-//     new PortfolioLink("Vertexture"),
-//     new PortfolioLink("Mountain Maze"),
-//     new PortfolioLink("Ocean")
-// );
-
-// const galleryPanel = new CollapsiblePanel(
-//     new PortfolioImage("Martial Path"),
-//     new PortfolioImage("Iron Phoenix Posters"),
-//     new PortfolioImage("Sketchbook"),
-//     new PortfolioImage("Green Mountains")
-// )
 
 portfolioPage.appendChild(largeAppPanel);
 portfolioPage.appendChild(smallAppPanel);
@@ -183,11 +170,13 @@ function toggleWebGLControl() {
     const zIndex = getComputedStyle(canvas).getPropertyValue('--z-webgl')
     if(zIndex == -2){
         canvas.style.setProperty('--z-webgl', 1)
+        console.log(experience.debug)
+        experience.debug.ui.show()
     }
     else {
         canvas.style.setProperty('--z-webgl', -2)
+        experience.debug.ui.hide()
     }
-    console.log(zIndex)
 }
 webglControlToggle.addEventListener("click", () => {
     toggleWebGLControl();
@@ -217,7 +206,6 @@ function toggleDarkMode() {
     const canvasColor = experience.renderer.convertColorString(colorNeutralContrast)
 
     experience.renderer.debugObject.clearColor = canvasColor;
-
 }
 
 darkModeToggle.addEventListener('click', () => {

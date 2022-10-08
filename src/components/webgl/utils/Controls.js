@@ -14,11 +14,8 @@ export default class Controls
 
         this.instance = new THREE.Vector2()
 
-        
         this.orbit = new OrbitControls(this.camera, this.controlElement)
-        // this.orbit.enableZoom = false;
         
-       
         window.addEventListener('mousemove', (event) =>
         {
             this.instance.x = event.clientX / this.sizes.width * 2 -1;

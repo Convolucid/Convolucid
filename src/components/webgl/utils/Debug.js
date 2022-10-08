@@ -1,14 +1,16 @@
-import * as dat from 'lil-gui'
+import GUI from 'lil-gui'
 
 export default class Debug
 {
     constructor()
     {
-        this.active = window.location.hash === '#debug'
+        this.active = true;
+
+        this.ui = new GUI( {} )
 
         if(this.active)
         {
-            this.ui = new dat.GUI( { width: 400 } )
+            this.ui.hide()
         }
     }
 }

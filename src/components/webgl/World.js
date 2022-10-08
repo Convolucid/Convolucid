@@ -10,6 +10,10 @@ export default class World
         this.scene = this.experience.scene
         this.debug = this.experience.debug
         this.time = this.experience.time
+        
+        this.debugObject = {}
+        this.debugObject.ambientColor = new THREE.Color(0.7, 1.0, 1.0);
+        this.debugObject.directionalColor = new THREE.Color(1.0, 1.0, 1.0);
 
         if(this.debug.active)
         {
@@ -19,24 +23,32 @@ export default class World
 
         // Lights
         // Ambient light
-        const ambientLight = new THREE.AmbientLight(0xffffff, 2.5)
+        this.ambientLight = new THREE.AmbientLight(this.debugObject.ambientColor, 2.5)
         if(this.debug.active)
         {
-            this.debugFolder.add(ambientLight, 'intensity').min(0).max(3).step(0.001).name('Ambient Light Intensity')
+            this.debugFolder.add(this.ambientLight, 'intensity').min(0).max(3).step(0.001).name('Ambient Light Intensity')
+            this.debugFolder.addColor(this.debugObject, 'ambientColor').name('Ambient Light Color').onChange(() =>
+            {
+                this.ambientLight.color = this.debugObject.ambientColor;
+            })
         }
-        this.scene.add(ambientLight)
+        this.scene.add(this.ambientLight)
         
         // Directional Light
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5)
-        directionalLight.position.set(3, 0.25, 2)
+        this.directionalLight = new THREE.DirectionalLight(this.debugObject.directionalColor, 1)
+        this.directionalLight.position.set(3, 0.25, 2)
         if(this.debug.active)
         {
-            this.debugFolder.add(directionalLight, 'intensity').min(0).max(3).step(0.001).name('Directional Light Intensity')
-            this.debugFolder.add(directionalLight.position, 'x').min(- 5).max(5).step(0.001)
-            this.debugFolder.add(directionalLight.position, 'y').min(- 5).max(5).step(0.001)
-            this.debugFolder.add(directionalLight.position, 'z').min(- 5).max(5).step(0.001)
+            this.debugFolder.add(this.directionalLight, 'intensity').min(0).max(3).step(0.001).name('Directional Light Intensity')
+            this.debugFolder.add(this.directionalLight.position, 'x').min(- 5).max(5).step(0.001)
+            this.debugFolder.add(this.directionalLight.position, 'y').min(- 5).max(5).step(0.001)
+            this.debugFolder.add(this.directionalLight.position, 'z').min(- 5).max(5).step(0.001)
+            this.debugFolder.addColor(this.debugObject, 'directionalColor').name('Directional Light Color').onChange(() =>
+            {
+                this.directionalLight.color = this.debugObject.directionalColor;
+            })
         }
-        this.scene.add(directionalLight)
+        this.scene.add(this.directionalLight)
 
 
 
@@ -69,16 +81,16 @@ export default class World
 
 
         // Galaxy
-        const parameters = {}
-        parameters.count = 30000
-        parameters.size = 0.05
-        parameters.radius = 5
-        parameters.branches = 7
-        parameters.spin = 1
-        parameters.randomness = 0.5
-        parameters.randomnessPower = 5
-        parameters.insideColor = '#eeeeee'
-        parameters.outsideColor = '#575757'
+        this.galaxyParameters = {}
+        this.galaxyParameters.count = 30000
+        this.galaxyParameters.size = 0.05
+        this.galaxyParameters.radius = 5
+        this.galaxyParameters.branches = 7
+        this.galaxyParameters.spin = 1
+        this.galaxyParameters.randomness = 0.5
+        this.galaxyParameters.randomnessPower = 5
+        this.galaxyParameters.insideColor = '#eeeeee'
+        this.galaxyParameters.outsideColor = '#575757'
 
         let galaxyGeometry = null
         let galaxyMaterial = null
@@ -95,25 +107,25 @@ export default class World
             }
 
             galaxyGeometry = new THREE.BufferGeometry()
-            const positions = new Float32Array(parameters.count * 3)
-            const colors = new Float32Array(parameters.count * 3)
+            const positions = new Float32Array(this.galaxyParameters.count * 3)
+            const colors = new Float32Array(this.galaxyParameters.count * 3)
 
-            const insideColor = new THREE.Color(parameters.insideColor)
-            const outsideColor = new THREE.Color(parameters.outsideColor)
+            const insideColor = new THREE.Color(this.galaxyParameters.insideColor)
+            const outsideColor = new THREE.Color(this.galaxyParameters.outsideColor)
 
 
 
-            for(let i = 0; i < parameters.count; i++) {
+            for(let i = 0; i < this.galaxyParameters.count; i++) {
                 const i3 = i * 3;
 
                 // Position
-                const radius = Math.random() * parameters.radius
-                const spinAngle = radius * parameters.spin
-                const branchAngle = (i % parameters.branches) / parameters.branches * Math.PI * 2
+                const radius = Math.random() * this.galaxyParameters.radius
+                const spinAngle = radius * this.galaxyParameters.spin
+                const branchAngle = (i % this.galaxyParameters.branches) / this.galaxyParameters.branches * Math.PI * 2
 
-                const randomX = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * parameters.randomness * radius
-                const randomY = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * parameters.randomness * radius
-                const randomZ = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * parameters.randomness * radius
+                const randomX = Math.pow(Math.random(), this.galaxyParameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * this.galaxyParameters.randomness * radius
+                const randomY = Math.pow(Math.random(), this.galaxyParameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * this.galaxyParameters.randomness * radius
+                const randomZ = Math.pow(Math.random(), this.galaxyParameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * this.galaxyParameters.randomness * radius
                 
                 positions[i3 + 0] = Math.cos(branchAngle + spinAngle) * radius + randomX
                 positions[i3 + 1] = randomY
@@ -121,7 +133,7 @@ export default class World
 
                 // Color
                 const mixedColor = insideColor.clone()
-                mixedColor.lerp(outsideColor, radius / parameters.radius)
+                mixedColor.lerp(outsideColor, radius / this.galaxyParameters.radius)
 
                 colors[i3 + 0] = mixedColor.r
                 colors[i3 + 1] = mixedColor.g
@@ -142,7 +154,7 @@ export default class World
 
             // galaxyMaterial
             galaxyMaterial = new THREE.PointsMaterial({
-                size: parameters.size,
+                size: this.galaxyParameters.size,
                 sizeAttenuation: true,
                 // color: '#000000'
                 // depthWrite: false,
@@ -161,15 +173,15 @@ export default class World
 
         if(this.debug.active)
         {
-            this.debugFolder.add(parameters, 'count').min(100).max(1000000).step(100).onFinishChange(generateGalaxy).name('particle count')
-            this.debugFolder.add(parameters, 'size').min(0.001).max(0.1).step(0.001).onFinishChange(generateGalaxy).name('particle size')
-            this.debugFolder.add(parameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(generateGalaxy)
-            this.debugFolder.add(parameters, 'branches').min(2).max(20).step(1).onFinishChange(generateGalaxy)
-            this.debugFolder.add(parameters, 'spin').min(-5).max(5).step(1).onFinishChange(generateGalaxy).name('spin intensity')
-            this.debugFolder.add(parameters, 'randomness').min(0).max(2).step(0.01).onFinishChange(generateGalaxy).name('particle randomness')
-            this.debugFolder.add(parameters, 'randomnessPower').min(1).max(10).step(0.001).onFinishChange(generateGalaxy).name('branch concentration')
-            this.debugFolder.addColor(parameters, 'insideColor').onFinishChange(generateGalaxy)
-            this.debugFolder.addColor(parameters, 'outsideColor').onFinishChange(generateGalaxy)
+            this.debugFolder.add(this.galaxyParameters, 'count').min(100).max(1000000).step(100).onFinishChange(generateGalaxy).name('particle count')
+            this.debugFolder.add(this.galaxyParameters, 'size').min(0.001).max(0.1).step(0.001).onFinishChange(generateGalaxy).name('particle size')
+            this.debugFolder.add(this.galaxyParameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(generateGalaxy)
+            this.debugFolder.add(this.galaxyParameters, 'branches').min(2).max(20).step(1).onFinishChange(generateGalaxy)
+            this.debugFolder.add(this.galaxyParameters, 'spin').min(-5).max(5).step(1).onFinishChange(generateGalaxy).name('spin intensity')
+            this.debugFolder.add(this.galaxyParameters, 'randomness').min(0).max(2).step(0.01).onFinishChange(generateGalaxy).name('particle randomness')
+            this.debugFolder.add(this.galaxyParameters, 'randomnessPower').min(1).max(10).step(0.001).onFinishChange(generateGalaxy).name('branch concentration')
+            this.debugFolder.addColor(this.galaxyParameters, 'insideColor').onFinishChange(generateGalaxy)
+            this.debugFolder.addColor(this.galaxyParameters, 'outsideColor').onFinishChange(generateGalaxy)
         }
 
     }

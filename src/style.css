@@ -126,6 +126,10 @@ body {
     z-index: var(--z-webgl);
 }
 
+.lil-gui {
+    left: 0;
+}
+
 .footer {
     min-height: 25vh;
 }
