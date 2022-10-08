@@ -29,9 +29,9 @@
 .nav-list li:hover,
 .nav-list li:focus {
     color: var(color-secondary);
-    text-shadow: 0px 0px 10px var(--color-primary),
-        0px 0px 30px var(--color-accent-contrast);
-    transition: 1s;
+    box-shadow: 0px 0px 10px var(--color-primary),
+        0px 0px 10px var(--color-accent-contrast);
+    transition: 0.5s;
 }
 
 .nav-list-collapse {
@@ -91,7 +91,8 @@
 }
 
 .nav-list-expand li {
-    padding: 0 2vw;
+    padding: 0 1vw;
+    margin-left: 10px;
 
     text-transform: uppercase;
 
@@ -108,6 +109,12 @@
 
 .nav-list-button svg {
     height: 2.25rem;
+}
+
+.nav-link-highlight {
+    background-color: var(--color-neutral);
+    color: var(--color-neutral-contrast);
+    border-radius: 4px;
 }
 
 #link-hire a {

@@ -31,6 +31,8 @@ function component(htmlStructure) {
 const bodyHTML = component(html);
 document.body.appendChild(bodyHTML);
 
+const r = document.querySelector(':root');
+
 const nav = navComponent();
 const main = document.querySelector("main");
 const canvas = document.querySelector("canvas.webgl")
@@ -40,6 +42,7 @@ const navTitle = document.getElementById("nav-title");
 const portfolioLink = document.getElementById("link-portfolio");
 const resumeLink = document.getElementById("link-resume");
 const webglControlToggle = document.getElementById('toggle-webgl-controls')
+const darkModeToggle = document.getElementById('toggle-dark-mode')
 
 const portfolioPage = document.createElement("div");
 const resumePage = document.createElement("div");
@@ -186,9 +189,42 @@ function toggleWebGLControl() {
     }
     console.log(zIndex)
 }
-webglControlToggle.addEventListener("click", () =>
-    toggleWebGLControl()
-);
+webglControlToggle.addEventListener("click", () => {
+    toggleWebGLControl();
+    nav.toggleHighlight(webglControlToggle);
+});
+
+function toggleDarkMode() {
+    const rs = getComputedStyle(r);
+
+    const colorNeutral = rs.getPropertyValue('--color-neutral')
+    const colorNeutralContrast = rs.getPropertyValue('--color-neutral-contrast')
+    const colorPrimary = rs.getPropertyValue('--color-primary')
+    const colorPrimaryContrast = rs.getPropertyValue('--color-primary-contrast')
+
+    const colorSecondary = rs.getPropertyValue('--color-secondary')
+    const colorSecondaryContrast = rs.getPropertyValue('--color-secondary-contrast')
+    const colorNeutralAlpha = rs.getPropertyValue('--color-neutral-alpha')
+    const colorOverlayAlpha = rs.getPropertyValue('--color-overlay-alpha')
+    
+    r.style.setProperty('--color-neutral', colorNeutralContrast)
+    r.style.setProperty('--color-neutral-contrast', colorNeutral)
+    r.style.setProperty('--color-primary', colorPrimaryContrast)
+    r.style.setProperty('--color-primary-contrast', colorPrimary)
+    r.style.setProperty('--color-secondary', colorSecondaryContrast)
+    r.style.setProperty('--color-secondary-contrast', colorSecondary)
+
+    const canvasColor = experience.renderer.convertColorString(colorNeutralContrast)
+
+    experience.renderer.debugObject.clearColor = canvasColor;
+
+}
+
+darkModeToggle.addEventListener('click', () => {
+    toggleDarkMode();
+    nav.toggleHighlight(darkModeToggle);
+})
+
 
 function resize() {
     nav.resize();

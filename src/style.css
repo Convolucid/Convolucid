@@ -6,10 +6,12 @@
 
     --color-neutral-contrast: rgb(46, 46, 46);
     --color-primary-contrast: rgb(243, 243, 243);
-    --color-accent-contrast: rgb(255, 254, 230);
+    --color-accent-contrast: rgb(255, 254, 245);
+    --color-secondary-contrast: rgb(88, 88, 88);
 
     --color-overlay-alpha: rgba(56, 56, 56, 0.95);
-    --color-neutral-alpha: rgba(249, 246, 250, 0);
+    --color-neutral-alpha: rgba(249, 246, 250, 0.1);
+    --color-secondary-alpha: rgba(219, 219, 219, 0.5);
 
     /* Fonts */
     --sansSerif: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",

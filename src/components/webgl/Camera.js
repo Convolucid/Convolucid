@@ -113,6 +113,6 @@ export default class Camera
 
     update()
     {
-        console.log(this.instance.position)
+
     }
 }

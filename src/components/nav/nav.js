@@ -52,6 +52,15 @@ export default function nav()
         }
     }
 
+    nav.toggleHighlight = function(element){
+        if(element.classList.contains('nav-link-highlight')) {
+            element.classList.remove('nav-link-highlight')
+        }
+        else {
+            element.classList.add('nav-link-highlight')
+        }
+    }
+
     // Resize function to toggle top menu
     nav.resize = () =>
     {

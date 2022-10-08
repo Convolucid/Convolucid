@@ -68,6 +68,25 @@ export default class Renderer
 
     }
 
+    convertColorString(color) {
+        const colorArray = color.slice(
+            color.indexOf('(') + 1,
+            color.indexOf(')')
+        ).split(', ');
+    
+        for(let i = 0; i < colorArray.length; i++) {
+            colorArray[i] /= 255;
+        }
+    
+        const newColor = new THREE.Color(
+            colorArray[0],
+            colorArray[1],
+            colorArray[2]
+        )
+
+        return newColor;
+    }
+
     resize()
     {
         this.instance.setSize(this.sizes.width, this.sizes.height)
@@ -79,6 +98,8 @@ export default class Renderer
         this.instance.setClearColor(this.debugObject.clearColor)
         this.instance.setClearAlpha(this.debugObject.clearAlpha)
         this.instance.render(this.scene, this.camera.instance)
+
+        // console.log(this.debugObject.clearColor)
     }
 
 }

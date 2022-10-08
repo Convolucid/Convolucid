@@ -155,8 +155,6 @@ export default class World
             this.points.rotation.x += 1;
             this.points.position.z = -3;
             this.scene.add(this.points)
-
-            console.log(parameters)
         }
 
         generateGalaxy();
