@@ -92,98 +92,100 @@ export default class World
         this.galaxyParameters.insideColor = '#eeeeee'
         this.galaxyParameters.outsideColor = '#575757'
 
-        let galaxyGeometry = null
-        let galaxyMaterial = null
+        this.galaxyGeometry = null
+        this.galaxyMaterial = null
         this.points = null
 
 
 
-        const generateGalaxy = () => {
-
-            if(this.points !== null) {
-                galaxyGeometry.dispose()
-                galaxyMaterial.dispose()
-                this.scene.remove(this.points)
-            }
-
-            galaxyGeometry = new THREE.BufferGeometry()
-            const positions = new Float32Array(this.galaxyParameters.count * 3)
-            const colors = new Float32Array(this.galaxyParameters.count * 3)
-
-            const insideColor = new THREE.Color(this.galaxyParameters.insideColor)
-            const outsideColor = new THREE.Color(this.galaxyParameters.outsideColor)
 
 
-
-            for(let i = 0; i < this.galaxyParameters.count; i++) {
-                const i3 = i * 3;
-
-                // Position
-                const radius = Math.random() * this.galaxyParameters.radius
-                const spinAngle = radius * this.galaxyParameters.spin
-                const branchAngle = (i % this.galaxyParameters.branches) / this.galaxyParameters.branches * Math.PI * 2
-
-                const randomX = Math.pow(Math.random(), this.galaxyParameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * this.galaxyParameters.randomness * radius
-                const randomY = Math.pow(Math.random(), this.galaxyParameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * this.galaxyParameters.randomness * radius
-                const randomZ = Math.pow(Math.random(), this.galaxyParameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * this.galaxyParameters.randomness * radius
-                
-                positions[i3 + 0] = Math.cos(branchAngle + spinAngle) * radius + randomX
-                positions[i3 + 1] = randomY
-                positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ
-
-                // Color
-                const mixedColor = insideColor.clone()
-                mixedColor.lerp(outsideColor, radius / this.galaxyParameters.radius)
-
-                colors[i3 + 0] = mixedColor.r
-                colors[i3 + 1] = mixedColor.g
-                colors[i3 + 2] = mixedColor.b
-
-            }
-
-            galaxyGeometry.setAttribute(
-                'position',
-                new THREE.BufferAttribute(positions, 3)
-            )
-
-            galaxyGeometry.setAttribute(
-                'color',
-                new THREE.BufferAttribute(colors, 3)
-            )
-
-
-            // galaxyMaterial
-            galaxyMaterial = new THREE.PointsMaterial({
-                size: this.galaxyParameters.size,
-                sizeAttenuation: true,
-                // color: '#000000'
-                // depthWrite: false,
-                // blending: THREE.AdditiveBlending,
-                vertexColors: true
-            })
-
-            // Points
-            this.points = new THREE.Points(galaxyGeometry, galaxyMaterial)
-            this.points.rotation.x += 1;
-            this.points.position.z = -3;
-            this.scene.add(this.points)
-        }
-
-        generateGalaxy();
+        this.generateGalaxy();
 
         if(this.debug.active)
         {
-            this.debugFolder.add(this.galaxyParameters, 'count').min(100).max(1000000).step(100).onFinishChange(generateGalaxy).name('particle count')
-            this.debugFolder.add(this.galaxyParameters, 'size').min(0.001).max(0.1).step(0.001).onFinishChange(generateGalaxy).name('particle size')
-            this.debugFolder.add(this.galaxyParameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(generateGalaxy)
-            this.debugFolder.add(this.galaxyParameters, 'branches').min(2).max(20).step(1).onFinishChange(generateGalaxy)
-            this.debugFolder.add(this.galaxyParameters, 'spin').min(-5).max(5).step(1).onFinishChange(generateGalaxy).name('spin intensity')
-            this.debugFolder.add(this.galaxyParameters, 'randomness').min(0).max(2).step(0.01).onFinishChange(generateGalaxy).name('particle randomness')
-            this.debugFolder.add(this.galaxyParameters, 'randomnessPower').min(1).max(10).step(0.001).onFinishChange(generateGalaxy).name('branch concentration')
-            this.debugFolder.addColor(this.galaxyParameters, 'insideColor').onFinishChange(generateGalaxy)
-            this.debugFolder.addColor(this.galaxyParameters, 'outsideColor').onFinishChange(generateGalaxy)
+            this.debugFolder.add(this.galaxyParameters, 'count').min(100).max(1000000).step(100).onFinishChange(this.generateGalaxy).name('particle count')
+            this.debugFolder.add(this.galaxyParameters, 'size').min(0.001).max(0.1).step(0.001).onFinishChange(this.generateGalaxy).name('particle size')
+            this.debugFolder.add(this.galaxyParameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(this.generateGalaxy)
+            this.debugFolder.add(this.galaxyParameters, 'branches').min(2).max(20).step(1).onFinishChange(this.generateGalaxy)
+            this.debugFolder.add(this.galaxyParameters, 'spin').min(-5).max(5).step(1).onFinishChange(this.generateGalaxy).name('spin intensity')
+            this.debugFolder.add(this.galaxyParameters, 'randomness').min(0).max(2).step(0.01).onFinishChange(this.generateGalaxy).name('particle randomness')
+            this.debugFolder.add(this.galaxyParameters, 'randomnessPower').min(1).max(10).step(0.001).onFinishChange(this.generateGalaxy).name('branch concentration')
+            this.debugFolder.addColor(this.galaxyParameters, 'insideColor').onFinishChange(this.generateGalaxy)
+            this.debugFolder.addColor(this.galaxyParameters, 'outsideColor').onFinishChange(this.generateGalaxy)
         }
 
+    }
+
+    generateGalaxy(){
+
+        if(this.points !== null) {
+            this.galaxyGeometry.dispose()
+            this.galaxyMaterial.dispose()
+            this.scene.remove(this.points)
+        }
+
+        this.galaxyGeometry = new THREE.BufferGeometry()
+        const positions = new Float32Array(this.galaxyParameters.count * 3)
+        const colors = new Float32Array(this.galaxyParameters.count * 3)
+
+        const insideColor = new THREE.Color(this.galaxyParameters.insideColor)
+        const outsideColor = new THREE.Color(this.galaxyParameters.outsideColor)
+
+
+
+        for(let i = 0; i < this.galaxyParameters.count; i++) {
+            const i3 = i * 3;
+
+            // Position
+            const radius = Math.random() * this.galaxyParameters.radius
+            const spinAngle = radius * this.galaxyParameters.spin
+            const branchAngle = (i % this.galaxyParameters.branches) / this.galaxyParameters.branches * Math.PI * 2
+
+            const randomX = Math.pow(Math.random(), this.galaxyParameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * this.galaxyParameters.randomness * radius
+            const randomY = Math.pow(Math.random(), this.galaxyParameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * this.galaxyParameters.randomness * radius
+            const randomZ = Math.pow(Math.random(), this.galaxyParameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * this.galaxyParameters.randomness * radius
+            
+            positions[i3 + 0] = Math.cos(branchAngle + spinAngle) * radius + randomX
+            positions[i3 + 1] = randomY
+            positions[i3 + 2] = Math.sin(branchAngle + spinAngle) * radius + randomZ
+
+            // Color
+            const mixedColor = insideColor.clone()
+            mixedColor.lerp(outsideColor, radius / this.galaxyParameters.radius)
+
+            colors[i3 + 0] = mixedColor.r
+            colors[i3 + 1] = mixedColor.g
+            colors[i3 + 2] = mixedColor.b
+
+        }
+
+        this.galaxyGeometry.setAttribute(
+            'position',
+            new THREE.BufferAttribute(positions, 3)
+        )
+
+        this.galaxyGeometry.setAttribute(
+            'color',
+            new THREE.BufferAttribute(colors, 3)
+        )
+
+
+        // this.galaxyMaterial
+        this.galaxyMaterial = new THREE.PointsMaterial({
+            size: this.galaxyParameters.size,
+            sizeAttenuation: true,
+            // color: '#000000'
+            // depthWrite: false,
+            // blending: THREE.AdditiveBlending,
+            vertexColors: true
+        })
+
+        // Points
+        this.points = new THREE.Points(this.galaxyGeometry, this.galaxyMaterial)
+        this.points.rotation.x += 1;
+        this.points.position.z = -3;
+        this.scene.add(this.points)
     }
 
     update()

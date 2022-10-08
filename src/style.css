@@ -114,6 +114,10 @@ body {
     z-index: var(--z-top);
 }
 
+.main {
+    font-family: var(--sansSerif);
+}
+
 .main-hidden {
     display: none;
 }

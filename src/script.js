@@ -206,6 +206,20 @@ function toggleDarkMode() {
     const canvasColor = experience.renderer.convertColorString(colorNeutralContrast)
 
     experience.renderer.debugObject.clearColor = canvasColor;
+
+    if(experience.world.ambientLight.intensity > 1){
+        experience.world.ambientLight.intensity = 0.01
+        experience.world.directionalLight.intensity = 0.25
+        experience.world.galaxyParameters.insideColor = '#222222'
+        experience.world.galaxyParameters.outsideColor = '#100000'
+        experience.world.generateGalaxy();
+    } else {
+        experience.world.ambientLight.intensity = 2.5
+        experience.world.directionalLight.intensity = 1.0
+        experience.world.galaxyParameters.insideColor = '#eeeeee'
+        experience.world.galaxyParameters.outsideColor = '#575757'
+        experience.world.generateGalaxy();
+    }
 }
 
 darkModeToggle.addEventListener('click', () => {
