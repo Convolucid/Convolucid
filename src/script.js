@@ -55,7 +55,7 @@ main.appendChild(resumePage);
 // Portfolio Page
 
 const portFolioIntro = new ResumeCategory(
-    `I am Stephen Roberts, a front-end developer and artist working toward a career in creative coding.  Welcome to my portfolio.`
+    `<h1>Welcome to my portfolio.</h1>I am Stephen Roberts, a front-end developer and artist working toward a career in creative coding.`
 );
 portfolioPage.appendChild(portFolioIntro);
 
@@ -181,6 +181,7 @@ function toggleWebGLControl() {
 webglControlToggle.addEventListener("click", () => {
     toggleWebGLControl();
     nav.toggleHighlight(webglControlToggle);
+    nav.resize()
 });
 
 function toggleDarkMode() {
@@ -228,6 +229,7 @@ function toggleDarkMode() {
 darkModeToggle.addEventListener('click', () => {
     toggleDarkMode();
     nav.toggleHighlight(darkModeToggle);
+    nav.resize()
 })
 
 
