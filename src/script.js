@@ -54,10 +54,12 @@ main.appendChild(resumePage);
 
 // Portfolio Page
 
-const portFolioIntro = new ResumeCategory(
-    `<h1>Welcome to my portfolio.</h1>I am Stephen Roberts, a front-end developer and artist working toward a career in creative coding.`
+const portfolioIntro = new ResumeCategory(
+    `<h1>Welcome to my portfolio.</h1>My name is Stephen Roberts.  I am a front-end developer and artist working in the field of creative coding.`
 );
-portfolioPage.appendChild(portFolioIntro);
+
+portfolioIntro.classList.replace('resume-category','hero-section')
+portfolioPage.appendChild(portfolioIntro);
 
 const largeAppPanel = new CollapsiblePanel(
     "Apps and Websites",
@@ -191,6 +193,8 @@ function toggleDarkMode() {
     const colorNeutralContrast = rs.getPropertyValue('--color-neutral-contrast')
     const colorPrimary = rs.getPropertyValue('--color-primary')
     const colorPrimaryContrast = rs.getPropertyValue('--color-primary-contrast')
+    const colorPrimaryAlpha = rs.getPropertyValue('--color-primary-alpha')
+    const colorPrimaryContrastAlpha = rs.getPropertyValue('--color-primary-contrast-alpha')
 
     const colorSecondary = rs.getPropertyValue('--color-secondary')
     const colorSecondaryContrast = rs.getPropertyValue('--color-secondary-contrast')
@@ -202,6 +206,8 @@ function toggleDarkMode() {
     r.style.setProperty('--color-neutral-contrast', colorNeutral)
     r.style.setProperty('--color-primary', colorPrimaryContrast)
     r.style.setProperty('--color-primary-contrast', colorPrimary)
+    r.style.setProperty('--color-primary-alpha', colorPrimaryContrastAlpha)
+    r.style.setProperty('--color-primary-contrast-alpha', colorPrimaryAlpha)
     r.style.setProperty('--color-secondary', colorSecondaryContrast)
     r.style.setProperty('--color-secondary-contrast', colorSecondary)
     r.style.setProperty('--color-overlay-alpha', colorOverlayContrastAlpha)

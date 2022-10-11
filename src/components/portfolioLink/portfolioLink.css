@@ -4,7 +4,6 @@
     justify-content: center;
     align-items: center;
     margin: 30px 0px;
-    background-color: var(--color-neutral-alpha);
     padding: 20px 20px;
     user-select: none;
     filter: grayscale();
@@ -37,6 +36,7 @@ a:visited,
 a:hover,
 a:active {
     text-decoration: none;
+    color: inherit;
 }
 
 .portfolio-item section > h2 {

@@ -31,7 +31,7 @@
 .collapsible-panel {
     justify-items: center;
     overflow: hidden;
-    background-color: var(--color-neutral-alpha);
+    background-color: var(--color-primary-contrast-alpha);
 }
 
 .collapsible-panel header {
@@ -40,7 +40,7 @@
 
 
 .collapsible-panel h1 {
-    margin: 10px auto;
+    margin: 0px auto;
     padding: 10px 20px;
     text-align: center;
     font-family: var(--serif);
