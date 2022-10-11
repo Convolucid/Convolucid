@@ -15,10 +15,11 @@ import resumePortfolio from "./components/resumeCategory/resumeCategories/portfo
 import resumeEducation from "./components/resumeCategory/resumeCategories/education.html";
 import resumeSkills from "./components/resumeCategory/resumeCategories/skills.html";
 
-import martialPathImg from "./assets/martialpath.png";
-import trainingWheelsImg from "./assets/trainingwheels.png";
-import oneironomiconImg from "./assets/oneironomicon.png";
-import ironPhoenixImg from "./assets/ironphoenix.png";
+import martialPathImg from "./assets/martialpath.jpg";
+import trainingWheelsImg from "./assets/trainingwheels.jpg";
+import oneironomiconImg from "./assets/oneironomicon.jpg";
+import ironPhoenixImg from "./assets/ironphoenix.jpg";
+import oceanImg from "./assets/ocean.jpg";
 
 function component(htmlStructure) {
     const element = document.createElement("div");
@@ -94,7 +95,7 @@ const smallAppPanel = new CollapsiblePanel(
     new PortfolioLink(
         "Ocean",
         "ocean.convolucid.com",
-        martialPathImg,
+        oceanImg,
         `A Three.js scene using fragment and vertex shaders.  The uniforms are updated on an animation cycle to create a moving texture like a churning sea.`
     ),
 )
