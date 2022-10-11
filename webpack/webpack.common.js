@@ -6,7 +6,8 @@ module.exports = {
     plugins:
     [
         new HtmlWebpackPlugin({
-            title: 'Convolucid'
+            title: 'Convolucid',
+            favicon: './src/assets/favicon.ico'
         })
     ],
     output:
