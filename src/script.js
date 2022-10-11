@@ -221,7 +221,7 @@ function toggleDarkMode() {
         experience.world.ambientLight.intensity = 0.01
         experience.world.directionalLight.intensity = 0.25
         experience.world.galaxyParameters.insideColor = '#222222'
-        experience.world.galaxyParameters.outsideColor = '#100000'
+        experience.world.galaxyParameters.outsideColor = '#203050'
         experience.world.generateGalaxy();
     } else {
         experience.world.ambientLight.intensity = 2.5
