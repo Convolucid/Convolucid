@@ -26,11 +26,14 @@ export default class World
         this.ambientLight = new THREE.AmbientLight(this.debugObject.ambientColor, 2.5)
         if(this.debug.active)
         {
-            this.debugFolder.add(this.ambientLight, 'intensity').min(0).max(3).step(0.001).name('Ambient Light Intensity')
-            this.debugFolder.addColor(this.debugObject, 'ambientColor').name('Ambient Light Color').onChange(() =>
+            this.debugAmbientLight = this.debugFolder.addFolder('Ambient Light')
+            this.debugAmbientLight.add(this.ambientLight, 'intensity').min(0).max(3).step(0.001).name('Intensity')
+            this.debugAmbientLight.addColor(this.debugObject, 'ambientColor').name('Color').onChange(() =>
             {
                 this.ambientLight.color = this.debugObject.ambientColor;
             })
+
+            this.debugAmbientLight.close()
         }
         this.scene.add(this.ambientLight)
         
@@ -39,14 +42,17 @@ export default class World
         this.directionalLight.position.set(3, 0.25, 2)
         if(this.debug.active)
         {
-            this.debugFolder.add(this.directionalLight, 'intensity').min(0).max(3).step(0.001).name('Directional Light Intensity')
-            this.debugFolder.add(this.directionalLight.position, 'x').min(- 5).max(5).step(0.001)
-            this.debugFolder.add(this.directionalLight.position, 'y').min(- 5).max(5).step(0.001)
-            this.debugFolder.add(this.directionalLight.position, 'z').min(- 5).max(5).step(0.001)
-            this.debugFolder.addColor(this.debugObject, 'directionalColor').name('Directional Light Color').onChange(() =>
+            this.debugDirectionalLight = this.debugFolder.addFolder('Directional Light')
+            this.debugDirectionalLight.add(this.directionalLight, 'intensity').min(0).max(3).step(0.001).name('Intensity')
+            this.debugDirectionalLight.addColor(this.debugObject, 'directionalColor').name('Color').onChange(() =>
             {
                 this.directionalLight.color = this.debugObject.directionalColor;
             })
+            this.debugDirectionalLight.add(this.directionalLight.position, 'x').min(- 5).max(5).step(0.001)
+            this.debugDirectionalLight.add(this.directionalLight.position, 'y').min(- 5).max(5).step(0.001)
+            this.debugDirectionalLight.add(this.directionalLight.position, 'z').min(- 5).max(5).step(0.001)
+
+            this.debugDirectionalLight.close()
         }
         this.scene.add(this.directionalLight)
 
@@ -56,11 +62,15 @@ export default class World
          * Objects
          */
         this.material = new THREE.MeshStandardMaterial()
+        this.material.metalness = 0.1
         this.material.roughness = 0.7
         if(this.debug.active)
         {
-            this.debugFolder.add(this.material, 'metalness').min(0).max(1).step(0.001)
-            this.debugFolder.add(this.material, 'roughness').min(0).max(1).step(0.001)
+            this.debugSpheres = this.debugFolder.addFolder('Spheres')
+            this.debugSpheres.add(this.material, 'metalness').min(0).max(1).step(0.001)
+            this.debugSpheres.add(this.material, 'roughness').min(0).max(1).step(0.001)
+
+            this.debugSpheres.close()
         }
 
 
@@ -104,15 +114,18 @@ export default class World
 
         if(this.debug.active)
         {
-            this.debugFolder.add(this.galaxyParameters, 'count').min(100).max(1000000).step(100).onFinishChange(this.generateGalaxy).name('particle count')
-            this.debugFolder.add(this.galaxyParameters, 'size').min(0.001).max(0.1).step(0.001).onFinishChange(this.generateGalaxy).name('particle size')
-            this.debugFolder.add(this.galaxyParameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(this.generateGalaxy)
-            this.debugFolder.add(this.galaxyParameters, 'branches').min(2).max(20).step(1).onFinishChange(this.generateGalaxy)
-            this.debugFolder.add(this.galaxyParameters, 'spin').min(-5).max(5).step(1).onFinishChange(this.generateGalaxy).name('spin intensity')
-            this.debugFolder.add(this.galaxyParameters, 'randomness').min(0).max(2).step(0.01).onFinishChange(this.generateGalaxy).name('particle randomness')
-            this.debugFolder.add(this.galaxyParameters, 'randomnessPower').min(1).max(10).step(0.001).onFinishChange(this.generateGalaxy).name('branch concentration')
-            this.debugFolder.addColor(this.galaxyParameters, 'insideColor').onFinishChange(this.generateGalaxy)
-            this.debugFolder.addColor(this.galaxyParameters, 'outsideColor').onFinishChange(this.generateGalaxy)
+            this.debugGalaxy = this.debugFolder.addFolder('Galaxy')
+            this.debugGalaxy.add(this.galaxyParameters, 'count').min(100).max(1000000).step(100).onFinishChange(() => {this.generateGalaxy()}).name('particle count')
+            this.debugGalaxy.add(this.galaxyParameters, 'size').min(0.001).max(0.1).step(0.001).onFinishChange(() => {this.generateGalaxy()}).name('particle size')
+            this.debugGalaxy.add(this.galaxyParameters, 'radius').min(0.01).max(20).step(0.01).onFinishChange(() => {this.generateGalaxy()})
+            this.debugGalaxy.add(this.galaxyParameters, 'branches').min(2).max(20).step(1).onFinishChange(() => {this.generateGalaxy()})
+            this.debugGalaxy.add(this.galaxyParameters, 'spin').min(-5).max(5).step(1).onFinishChange(() => {this.generateGalaxy()}).name('spin intensity')
+            this.debugGalaxy.add(this.galaxyParameters, 'randomness').min(0).max(2).step(0.01).onFinishChange(() => {this.generateGalaxy()}).name('particle randomness')
+            this.debugGalaxy.add(this.galaxyParameters, 'randomnessPower').min(1).max(10).step(0.001).onFinishChange(() => {this.generateGalaxy()}).name('branch concentration')
+            this.debugGalaxy.addColor(this.galaxyParameters, 'insideColor').onFinishChange(() => {this.generateGalaxy()})
+            this.debugGalaxy.addColor(this.galaxyParameters, 'outsideColor').onFinishChange(() => {this.generateGalaxy()})
+
+            this.debugGalaxy.close()
         }
 
     }
@@ -209,7 +222,7 @@ export default class World
         this.points.rotation.y += 0.00005
 
         // Update the materials
-        this.material.roughness = Math.abs(Math.cos(elapsedTime * 0.25))
+        // this.material.roughness = Math.abs(Math.cos(elapsedTime * 0.25))
         // this.material.metalness = Math.abs(Math.sin(elapsedTime))
     }
 }

@@ -55,7 +55,7 @@ main.appendChild(resumePage);
 // Portfolio Page
 
 const portFolioIntro = new ResumeCategory(
-    `Hello!  I am Stephen Roberts, a front-end developer and artist working toward a career in creative coding.  I'm especially interested in 3D graphics, data visualization, user interfaces, and game development.  Welcome to my portfolio.`
+    `I am Stephen Roberts, a front-end developer and artist working toward a career in creative coding.  Welcome to my portfolio.`
 );
 portfolioPage.appendChild(portFolioIntro);
 
@@ -195,6 +195,7 @@ function toggleDarkMode() {
     const colorSecondaryContrast = rs.getPropertyValue('--color-secondary-contrast')
     const colorNeutralAlpha = rs.getPropertyValue('--color-neutral-alpha')
     const colorOverlayAlpha = rs.getPropertyValue('--color-overlay-alpha')
+    const colorOverlayContrastAlpha = rs.getPropertyValue('--color-overlay-contrast-alpha')
     
     r.style.setProperty('--color-neutral', colorNeutralContrast)
     r.style.setProperty('--color-neutral-contrast', colorNeutral)
@@ -202,6 +203,8 @@ function toggleDarkMode() {
     r.style.setProperty('--color-primary-contrast', colorPrimary)
     r.style.setProperty('--color-secondary', colorSecondaryContrast)
     r.style.setProperty('--color-secondary-contrast', colorSecondary)
+    r.style.setProperty('--color-overlay-alpha', colorOverlayContrastAlpha)
+    r.style.setProperty('--color-overlay-contrast-alpha', colorOverlayAlpha)
 
     const canvasColor = experience.renderer.convertColorString(colorNeutralContrast)
 

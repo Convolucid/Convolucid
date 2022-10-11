@@ -9,7 +9,7 @@ export default class Camera
         this.sizes = this.experience.sizes
         this.scene = this.experience.scene
         this.canvas = this.experience.canvas
-        // this.controls = this.experience.controls
+        this.controls = this.experience.controls
         this.debug = this.experience.debug
 
         if(this.debug.active)
@@ -44,13 +44,13 @@ export default class Camera
         if(this.debug.active)
         {
             this.debugFolder.add(this.instance, 'fov').min(0.1).max(100).step(0.01)
-                .onChange(() => {this.instance.updateProjectionMatrix()})
+                .onChange(() => {this.instance.updateProjectionMatrix()}).name('Field of View')
             this.debugFolder.add(this.instance, 'aspect').min(0.1).max(10).step(0.001)
-                .onChange(() => {this.instance.updateProjectionMatrix()})  
+                .onChange(() => {this.instance.updateProjectionMatrix()}).name('Aspect Ratio')  
             this.debugFolder.add(this.instance, 'near').min(0.1).max(10).step(0.001)
-                .onChange(() => {this.instance.updateProjectionMatrix()})  
+                .onChange(() => {this.instance.updateProjectionMatrix()}).name('Near')  
             this.debugFolder.add(this.instance, 'far').min(10).max(2000).step(0.001)
-            .onChange(() => {this.instance.updateProjectionMatrix()})  
+            .onChange(() => {this.instance.updateProjectionMatrix()}).name('Far')
         }
 
 
