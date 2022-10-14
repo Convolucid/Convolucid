@@ -13,6 +13,7 @@
     --color-secondary-contrast: rgb(36, 36, 36);
     --color-secondary-alpha: rgba(219, 219, 219, 0.5);
 
+    --color-accent: rgb(0, 1, 10);
     --color-accent-contrast: rgb(255, 254, 245);
     --color-overlay-alpha: rgba(56, 56, 56, 0.95);
     --color-overlay-contrast-alpha: rgba(199, 199, 199, 0.95);

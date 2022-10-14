@@ -153,19 +153,39 @@ function displayContent(content, contentArray) {
     }
     resize();
 }
-displayContent(portfolioPage, mainPageArray);
+
+function displayPortfolioPage()
+{
+    displayContent(portfolioPage, mainPageArray);
+    portfolioLink.classList.add('nav-list-focus')
+    resumeLink.classList.remove('nav-list-focus')
+}
+
+displayPortfolioPage();
+
 
 navLogo.addEventListener("click", () =>
-    displayContent(portfolioPage, mainPageArray)
+    {
+        displayPortfolioPage();
+    }
 );
 navTitle.addEventListener("click", () =>
-    displayContent(portfolioPage, mainPageArray)
+    {
+        displayPortfolioPage();
+    }
 );
 portfolioLink.addEventListener("click", () =>
-    displayContent(portfolioPage, mainPageArray)
+    {
+        displayPortfolioPage();
+    }
+
 );
 resumeLink.addEventListener("click", () =>
-    displayContent(resumePage, mainPageArray)
+    {
+        displayContent(resumePage, mainPageArray)
+        resumeLink.classList.add('nav-list-focus')
+        portfolioLink.classList.remove('nav-list-focus')
+    }
 );
 
 // Toggle functions for 3D control and dark mode
@@ -199,6 +219,8 @@ function toggleDarkMode() {
 
     const colorSecondary = rs.getPropertyValue('--color-secondary')
     const colorSecondaryContrast = rs.getPropertyValue('--color-secondary-contrast')
+    const colorAccent = rs.getPropertyValue('--color-accent')
+    const colorAccentContrast = rs.getPropertyValue('--color-accent-contrast')
     const colorNeutralAlpha = rs.getPropertyValue('--color-neutral-alpha')
     const colorOverlayAlpha = rs.getPropertyValue('--color-overlay-alpha')
     const colorOverlayContrastAlpha = rs.getPropertyValue('--color-overlay-contrast-alpha')
@@ -211,6 +233,8 @@ function toggleDarkMode() {
     r.style.setProperty('--color-primary-contrast-alpha', colorPrimaryAlpha)
     r.style.setProperty('--color-secondary', colorSecondaryContrast)
     r.style.setProperty('--color-secondary-contrast', colorSecondary)
+    r.style.setProperty('--color-accent', colorAccentContrast)
+    r.style.setProperty('--color-accent-contrast', colorAccent)
     r.style.setProperty('--color-overlay-alpha', colorOverlayContrastAlpha)
     r.style.setProperty('--color-overlay-contrast-alpha', colorOverlayAlpha)
 
