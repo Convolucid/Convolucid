@@ -71,6 +71,12 @@ const largeAppPanel = new CollapsiblePanel(
         `A digital version of my kung fu school's rank curriculum, in which students complete challenges to earn new techniques, lessons, and sets.  The app demonstrates mobile-first responsive design with HTML, CSS, and Javascript.  Direct SVG manipulation, GSAP animation, and CSS transitions are utilized in menus and backgrounds. All artwork was created in Adobe Photoshop, Illustrator, and Indesign using original illustrations and stock images.`
     ),
     new PortfolioLink(
+        "Iron Phoenix",
+        "ironphoenix.net",
+        ironPhoenixImg,
+        `My first professional website, built for my kung fu school.  The site is built with MODX, an open source CMS similar to Wordpress.  Some of the more notable features include an auto-scrolling gallery and parallax image movement.`
+    ),
+    new PortfolioLink(
         "Training Wheels",
         "wheels.convolucid.com",
         trainingWheelsImg,
@@ -82,12 +88,6 @@ const largeAppPanel = new CollapsiblePanel(
         oneironomiconImg,
         `A showcase of WebGL and surrealist poetry.  The Oneironomicon is my playground for Three.js, Blender, and GLSL practice.  The site features custom 3D models and shaders with Javascript-triggered GSAP animations.  It also includes experiments with creative uses of HTML Canvas and the 2D API.`
     ),
-    new PortfolioLink(
-        "Iron Phoenix",
-        "ironphoenix.com",
-        ironPhoenixImg,
-        `My first professional website, built for my kung fu school.  The site is built with MODX, an open source CMS similar to Wordpress.  Some of the more notable features include an auto-scrolling gallery and parallax image movement.`
-    )
 );
 
 const smallAppPanel = new CollapsiblePanel(
