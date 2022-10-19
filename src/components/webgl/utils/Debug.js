@@ -1,16 +1,13 @@
-import GUI from 'lil-gui'
+import GUI from "lil-gui";
 
-export default class Debug
-{
-    constructor()
-    {
+export default class Debug {
+    constructor() {
         this.active = true;
 
-        this.ui = new GUI()
+        this.ui = new GUI();
 
-        if(this.active)
-        {
-            this.ui.hide()
+        if (this.active) {
+            this.ui.hide();
         }
     }
 }
