@@ -82,12 +82,6 @@ const largeAppPanel = new CollapsiblePanel(
         "poetics.convolucid.com",
         oneironomiconImg,
         `A project site experimenting with WebGL and canvas manipulation.  The Oneironomicon is a playground for Three.js, Blender, and GLSL practice.  The site features custom 3D models and shaders with Javascript-triggered GSAP animations.  It includes scroll-triggered events and creative uses of the HTML Canvas 2D context.`
-    ),
-    new PortfolioLink(
-        "Training Wheels",
-        "wheels.convolucid.com",
-        trainingWheelsImg,
-        `This site is a rehearsal space for me to practice coding fundamentals, version control, and Webpack bundling.  After adding new features to the site I delete and rewrite it from scratch (using the old code as reference).  The most recent version has some light SVG animations on custom background illustrations.  The site's code is written in vanilla HTML, CSS, and Javascript, while the content is written in Markdown and imported with a Webpack plugin.`
     )
 );
 
@@ -98,6 +92,12 @@ const smallAppPanel = new CollapsiblePanel(
         "ocean.convolucid.com",
         oceanImg,
         `A Three.js scene using fragment and vertex shaders.  The uniforms are updated on an animation cycle to create a moving texture like a churning sea.`
+    ),
+    new PortfolioLink(
+        "Training Wheels",
+        "wheels.convolucid.com",
+        trainingWheelsImg,
+        `This site is a rehearsal space for me to practice coding fundamentals, version control, and Webpack bundling.  After adding new features to the site I delete and rewrite it from scratch (using the old code as reference).  The most recent version has some light SVG animations on custom background illustrations.  The site's code is written in vanilla HTML, CSS, and Javascript, while the content is written in Markdown and imported with a Webpack plugin.`
     )
 );
 
