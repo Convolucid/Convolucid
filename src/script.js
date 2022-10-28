@@ -8,6 +8,7 @@ import PortfolioLink from "./components/portfolioLink/PortfolioLink.js";
 
 import ResumeCategory from "./components/resumeCategory/resumeCategory.js";
 import resumePDF from "./assets/2022.09_Resume.pdf";
+import resumeCourseraCertPDF from "./assets/2022.10_HTML-CSS-JS-forWebDevelopers.pdf";
 import resumeHeadingHTML from "./components/resumeCategory/resumeCategories/resumeHeading.html";
 import resumeWorkExperience from "./components/resumeCategory/resumeCategories/workExperience.html";
 import resumeRecentProjects from "./components/resumeCategory/resumeCategories/recentProjects.html";
@@ -138,7 +139,9 @@ resumePage.appendChild(resumeEducationPanel);
 resumePage.appendChild(resumeSkillsPanel);
 
 const resumeDownloadPDF = document.getElementById("resume-pdf");
+const resumeDownloadCourseraCertPDF = document.getElementById("resume-coursera-cert-pdf");
 resumeDownloadPDF.href = resumePDF;
+resumeDownloadCourseraCertPDF.href = resumeCourseraCertPDF;
 
 /**
  * Page Switching Functionality

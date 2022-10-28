@@ -8,6 +8,10 @@
     font-size: 2rem;
 }
 
+.resume-education {
+    padding-bottom: 25px;
+}
+
 .skill-list {
     display: flex;
     flex-wrap: wrap;
